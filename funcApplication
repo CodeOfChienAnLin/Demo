@@ -1,0 +1,67 @@
+
+
+//func 的應用
+
+//沒有參數的func
+func makeApp() {
+    print("create project")
+    print("Coding....")
+    print("Test project")
+    print("Go into store")
+}
+
+makeApp()
+
+//有參數的func
+
+func playGame(gameName:String,gameLevel:Int) {
+    print("I am playing " + gameName)
+    print("My Gamer is level \(gameLevel)")
+}
+
+playGame(gameName:"LOL",gameLevel: 2)
+
+
+//有回傳值的函式
+
+func multiply(number1:Int,number2:Int) -> String {
+    
+//    let answer: Int = number1 * number2
+//    return String(answer)
+    return "\(number1 * number2)"
+}
+
+var outputAnswer = multiply(number1: 3, number2: 3)
+
+print(outputAnswer)
+
+
+//沒有回傳值的寫法
+func test01() {
+    print("No return")
+}
+
+func test02() -> (){
+    print("No return")
+}
+func test03()-> Void {
+    print("No return")
+}
+
+
+
+//面積公式
+//外部函數          //withWidth , withHeight 給外部使用的名稱
+func calculateArea(withWidth width:Double,withHeight height:Double) -> Double {
+    return width * height
+}
+
+calculateArea(withWidth: 3.333, withHeight: 3.56)
+
+//_ 可以使外部名稱直接被忽略 如下
+
+func shopping(_ produce:String,_ price:Int) {
+    print("I buy the \(produce),it spent $\(price)")
+}
+
+shopping("Iphone", 500)
