@@ -1,0 +1,18 @@
+
+//陣列與while loop的應用
+//記得用while 裡面地index一定要每次增加一個單位 不然系統會無限迴圈
+
+var animnalArray = ["dog","cat","lion","tiger"]
+var index = 0
+while  index < animnalArray.count{
+   print(animnalArray[index])
+    index += 1
+}
+//使用repeat-while 的重點就是 儘管條件不符合 但是還是會執行至少一次的程式內容
+var myCounter = 11
+
+repeat{
+    print("Just do the \(myCounter)")
+    myCounter += 1
+}while myCounter < 11
+
