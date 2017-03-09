@@ -1,0 +1,144 @@
+
+
+
+
+
+//closure應用
+
+//#1 刪除關鍵詞func, 刪除函式名稱
+//#2 把參數跟回傳值移到大括號中
+//#3 加入in
+
+func hi() {
+    print("hi,how are you")
+}
+
+//closure
+
+let hiClosure:() -> Void = {print("hi,how are you")}
+
+hiClosure()
+
+//有參數的closure
+
+func shopping(produce:String,price:Int) {
+    print("I buy the \(produce) costing \(price) dollars")
+}
+
+let shoppingClosure:(String,Int) ->() = {
+    (produce:String,price:Int) in
+    print("I buy the \(produce) costing \(price) dollars")
+}
+
+shoppingClosure("iphone",500)
+
+//有回傳值的closure
+
+func eatLunch(foodName:String,price:Int) -> String {
+    return "I eat \(foodName) , It spent \(price)"
+}
+
+let eatLunchClosure:(String,Int) -> String = {
+    (foodName:String,price:Int) -> String in
+    return "I eat \(foodName) , It spent \(price)"
+}
+
+eatLunchClosure("buger",80)
+
+
+//closure 同時也可以當作一個參數來用
+
+func calculate (num1:Int,num2:Int,operation:(Int,Int) -> (Int)) {
+    print(operation(num1,num2))
+}
+
+let totallyClosure:(Int,Int) -> Int = {
+    (num1:Int,num2:Int) -> Int in
+    return num1 * num2
+}
+
+calculate(num1: 3, num2: 4, operation: totallyClosure)
+
+//closure 可以當作是回傳值
+func giveMeTotallyClosure () -> (Int,Int) -> Int {
+    return totallyClosure
+}
+
+let iGetTotallyClosure:(Int,Int) -> Int = giveMeTotallyClosure()
+
+iGetTotallyClosure(2,5)
+
+//return closure
+
+func giveMeCounter () -> () ->(Int) {
+    var counter: Int = 0
+//    func 的做法
+//    func addOne () -> Int {
+//        counter += 1
+//        return counter
+//    }
+//  closure
+    return{
+            () -> Int in
+            counter += 1
+            return counter
+        }
+    
+}
+
+let counter = giveMeCounter()
+counter()
+counter()
+counter()
+
+
+//省略的寫法
+//#1 已經能夠確認參數跟回傳值的型別的話 可以刪除Closure 裡面參數跟回傳值的型別
+//#2 程式碼只有一行的情況下 可以刪除return
+//#3 用$0 ,$1 ,$2 等 代替傳進的參數名稱
+//#4 如果是最後或唯一的參數 可以把closure 移後至參數小括號外
+//#5 如果是唯一的參數 可省略參數小括號
+func calculate01 (num1:Int,num2:Int,operation:(Int,Int) -> (Int)) {
+    print(operation(num1,num2))
+}
+
+let totallyClosure01:(Int,Int) -> Int = { $0 * $1 }
+
+//Map和closure的應用
+
+var numArray = [1,3,5,7,9,2,4,6,8,10]
+numArray.count
+
+let newNumArray = numArray.map({
+    (num:Int) -> Int in
+    return (num + 10)
+})
+//簡寫
+let newNumArrayAddTen = numArray.map{$0 + 10}
+
+newNumArray
+
+numArray.map({
+    (a:Int) -> String in
+    return "This is a \(a)"
+})
+
+//簡寫 #4
+numArray.map(){"\($0)"}
+//#5
+numArray.map{"\($0)"}
+
+newNumArrayAddTen
+
+//filter的應用
+let evenArray = numArray.filter({
+    (num:Int) -> Bool in
+    return num % 2 == 0
+})
+
+evenArray
+
+//filter 簡寫closure
+let largeThanFive = numArray.filter{$0 > 5}
+
+largeThanFive
