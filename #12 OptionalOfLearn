@@ -1,0 +1,46 @@
+
+
+//Optional 應用
+
+var x:Int? = 8
+
+var twoWord:String? = nil
+
+var isOver:Bool? = nil
+
+
+if x != nil {
+    x = x! + 1
+}
+
+print(x)
+
+//Optional Binding
+//if let 常數 = Optional 的值
+//if var 變數 = Optional 的值
+
+
+if let myNumber = x {
+    myNumber + 1
+}
+//加入! 與?的差別在於 !可以確定 optional 裡面一定有值 可以直接使用
+var luckyNum:Int! = 7
+print(luckyNum)
+luckyNum + 10
+
+var highScore: Int
+var loadedScore:Int? = 1000
+
+if loadedScore != nil {
+    highScore = loadedScore!
+    print(highScore)
+}
+
+if let okScore = loadedScore {
+    highScore = okScore
+    print(highScore)
+}
+
+//簡寫
+highScore = loadedScore != nil ? loadedScore!: 0
+highScore = loadedScore ?? 0
