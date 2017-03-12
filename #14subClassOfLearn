@@ -1,0 +1,67 @@
+class Baby {
+    var name: String
+    var age: Int
+    // 如果是optional 就不用給初始值
+    //var age: Int?
+    func sleep() {
+        print("sleep")
+    }
+    
+    func introduceSelf() {
+        print("My name is \(name), I am \(age) years old")
+    }
+    init() {
+        name = "Tom"
+        age = 2
+        //        sleep()
+    }
+    init(name: String) {
+        self.name = name
+        age = 2
+    }
+    init(name: String,age: Int) {
+        self.name = name
+        self.age = age
+    }
+}
+
+//subclass
+class NewBaby:Baby {
+    var favorite:String
+    
+    func askFavorite() {
+        print("I like to \(favorite)")
+    }
+    
+    override func sleep() {
+        print("I want to sleep")
+        super.sleep()
+    }
+    //複寫方法
+    override func introduceSelf() {
+        print("Hi, I am new Baby.Please call me \(name),I like to \(favorite)")
+        super.introduceSelf()
+    }
+    //複寫init方法
+    //#0 先初始化自己的屬性
+    //#1 呼叫 super.init()
+    //#2 設定父類別的屬性
+    override init(){
+        favorite = "play ball"
+        super.init()
+        name = "Kate"
+    }
+}
+
+var newBaby:NewBaby = NewBaby()
+
+newBaby.age = 2
+newBaby.name = "Jack"
+newBaby.introduceSelf()
+newBaby.favorite = "go shopping"
+newBaby.askFavorite()
+newBaby.sleep()
+
+
+
+
