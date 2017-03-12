@@ -1,0 +1,51 @@
+class Lego {
+    
+}
+
+class Baby {
+    var name: String
+    var age: Int
+    // 如果是optional 就不用給初始值
+    //var age: Int?
+    func sleep() {
+        print("sleep")
+    }
+    
+    func introduceSelf() {
+        print("My name is \(name), I am \(age) years old")
+    }
+    init() {
+        name = "Tom"
+        age = 2
+//        sleep()
+    }
+    init(name: String) {
+        self.name = name
+        age = 2
+    }
+    init(name: String,age: Int) {
+        self.name = name
+        self.age = age
+    }
+}
+
+var baby = Baby()
+//var baby2 = Baby()
+//baby.age
+//baby.name
+//baby.sleep()
+//baby.introduceSelf()
+//
+//baby2.name = "Tim"
+//baby2.introduceSelf()
+
+var baby3 = Baby(name: "Sophie")
+baby3.name
+baby3.introduceSelf()
+
+var baby4 = Baby(name: "Divad",age: 2)
+baby4.name
+baby4.age
+baby4.introduceSelf()
+
+
