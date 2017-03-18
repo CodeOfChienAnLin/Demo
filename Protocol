@@ -1,0 +1,118 @@
+protocol MoneyTransferProtocol {
+    func giveMony()
+}
+
+class RichPeople:MoneyTransferProtocol {
+    func giveMony() {
+        print("give 100 dollars for you")
+    }
+}
+
+class NormalPeople:MoneyTransferProtocol {
+    func giveMony() {
+        print("Give 10 dollars for you")
+    }
+}
+
+class PoorGuy {
+    var helper:MoneyTransferProtocol?
+    func needMoney() {
+        helper?.giveMony()
+    }
+}
+
+let aPoorGuy = PoorGuy()
+let aRichPeople = RichPeople()
+let aNormalPeople = NormalPeople()
+
+aPoorGuy.helper = aNormalPeople
+aPoorGuy.needMoney()
+
+aPoorGuy.helper = aRichPeople
+aPoorGuy.needMoney()
+
+
+protocol Workable {
+    func work()
+}
+
+class Worker:Workable {
+    func work() {
+        print("I work at 9 to 5")
+    }
+}
+
+class Boss {
+    var delegate:Workable?
+    func makeMoney() {
+        delegate?.work()
+    }
+}
+
+let aBoss = Boss()
+let aWorker = Worker()
+
+aBoss.delegate = aWorker
+aBoss.makeMoney()
+
+
+
+
+protocol SeviceProtocol {
+    func sevice ()
+}
+
+class Witer:SeviceProtocol {
+    func sevice() {
+        print("I do a table sevice")
+    }
+}
+
+class Custom {
+    var callWiter:SeviceProtocol?
+    func makeMeal(){
+        callWiter?.sevice()
+    }
+}
+
+let aWiter = Witer()
+let aCustom = Custom()
+
+aCustom.callWiter = aWiter
+aCustom.makeMeal()
+
+protocol PickerViewDelegate {
+    func titleForRow()
+}
+
+class ViewController:PickerViewDelegate {
+    func titleForRow() {
+        print("Hello")
+    }
+}
+
+class PickerView{
+    var delegate:PickerViewDelegate?
+    func whatToShow(){
+        delegate?.titleForRow()
+    }
+}
+
+let aPickerView = PickerView()
+let aViewController = ViewController()
+aPickerView.delegate = aViewController
+aPickerView.whatToShow()
+
+
+
+
+
+
+
+
+
+
+
+
+
+
